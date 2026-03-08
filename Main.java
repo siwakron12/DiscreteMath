@@ -1,9 +1,9 @@
+public class Main {                 
 
-public class Main {
+    public static void main(String[] args) {  
+        
+        new App().run();        // โปรแกรมสร้างอ็อบเจกต์ App และเรียกเมธอด run เพื่อเริ่มระบบ
 
-    public static void main(String[] args) {
+    }                                  
 
-        // รับ input บลา print บลาๆ
-    }
-
-}
+}                                     

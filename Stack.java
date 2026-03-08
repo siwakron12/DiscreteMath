@@ -1,48 +1,61 @@
-public class Stack {
-    private int maxSize ;
-    private String[] stackArray ;
-    private int top ;
+public class Stack {                       // คลาส Stack จัดเก็บข้อมูลแบบ LIFO
 
-    public Stack(int Size) { //Constructor เพื่อจะกำหนด'ขนาด'ของ Stack
-        this.maxSize = Size ;
-        this.stackArray = new String[maxSize] ;
-        this.top = -1 ; //จุดเริ่มของ Stack (ตัวแรกเป็น 0 แปลว่า ก่อนที่จะเป็นตัวแรกก็ต้องเป็น -1)
+    private int maxSize;                   // ตัวแปร maxSize เก็บขนาดสูงสุดของ Stack
+    private String[] stackArray;           // ตัวแปร stackArray เก็บข้อมูลใน Stack
+    private int top;                       // ตัวแปร top เก็บตำแหน่งข้อมูลบนสุดของ Stack
+
+    public Stack(int Size) {               // Constructor สร้าง Stack ใหม่และกำหนดขนาด
+
+        this.maxSize = Size;               // โปรแกรมกำหนดค่าขนาดสูงสุดของ Stack
+        this.stackArray = new String[maxSize];  // โปรแกรมสร้าง array สำหรับเก็บข้อมูล
+        this.top = -1;                     // โปรแกรมกำหนดตำแหน่งเริ่มต้นของ Stack
+
     }
 
-    public void push(String value) { // method push เข้ากล่อง
-        if(top < maxSize-1) {
-             stackArray[++top] = value ;
+    public void push(String value) {       // เมธอด push เพิ่มข้อมูลเข้า Stack
+
+        if(top < maxSize-1){               // โปรแกรมตรวจสอบว่า Stack ยังไม่เต็ม
+
+            stackArray[++top] = value;     // โปรแกรมเพิ่มข้อมูลใหม่ไว้บนสุดของ Stack
+
         }
-        else {
-            System.out.println("Stack Overflow!"); // check stack overflow (ข้อมูลล้นกล่อง)
+        else{
+            System.out.println("Stack Overflow");   // โปรแกรมแสดงข้อความเมื่อ Stack เต็ม
         }
+
     }
 
-    public String pop() { // method pop ข้อมูลออกกล่อง
-        if(!isEmpty()) {
-            return stackArray[top--] ;
+    public String pop(){                   // เมธอด pop นำข้อมูลออกจาก Stack
+
+        if(!isEmpty()){                    // โปรแกรมตรวจสอบว่า Stack ไม่ว่าง
+
+            return stackArray[top--];      // โปรแกรมคืนค่าข้อมูลตัวบนสุดและลดตำแหน่ง top
+
         }
-        else {
-            System.out.println("Stack Underflow!"); // check stack underflow
-            return null ;
+        else{
+            System.out.println("Stack Underflow");  // โปรแกรมแสดงข้อความเมื่อ Stack ว่าง
+            return null;
         }
+
     }
 
-    public String peek() { //แอบส่องกล่อง
-        if(!isEmpty()) {
-            return stackArray[top] ;
+    public String peek(){                  // เมธอด peek ดูค่าบนสุดของ Stack
+
+        if(!isEmpty()){                    // โปรแกรมตรวจสอบว่า Stack ไม่ว่าง
+
+            return stackArray[top];        // โปรแกรมคืนค่าข้อมูลบนสุดโดยไม่ลบข้อมูล
+
         }
-        else {
-            System.out.println("Stack is Empty!!");
-            return null ;
+        else{
+            return null;                   // โปรแกรมคืนค่า null เมื่อ Stack ว่าง
         }
+
     }
 
-    public boolean isEmpty() { //กล่องว่างมั้ยน้อ
-        return (top == -1) ;
+    public boolean isEmpty(){              // เมธอด isEmpty ตรวจสอบว่า Stack ว่างหรือไม่
+
+        return (top == -1);                // โปรแกรมคืนค่า true เมื่อ Stack ไม่มีข้อมูล
+
     }
 
-    public boolean isFull() {
-        return (top == maxSize-1) ; //กล่องเต็มมั้ยน้อ
-    }
 }
